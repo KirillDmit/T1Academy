@@ -36,6 +36,20 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.9.19</version>
         </dependency>
+
+        <!-- Spring for Kafka -->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <!-- Jackson for JSON handling -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.13.0</version>
+        </dependency>
+
     </dependencies>
 
 </project>
