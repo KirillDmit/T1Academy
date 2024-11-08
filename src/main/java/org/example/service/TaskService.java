@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.entity.Task;
+import org.example.exception.TaskNotFoundException;
 import org.example.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,8 @@ public class TaskService {
     }
 
     public Optional<Task> getTaskById(Long id) {
-        return taskRepository.findById(id);
+        return Optional.ofNullable(taskRepository.findById(id)
+                .orElseThrow(() -> new TaskNotFoundException("Task with id " + id + " not found")));
     }
 
     public List<Task> getAllTasks() {
