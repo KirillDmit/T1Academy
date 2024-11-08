@@ -21,5 +21,6 @@ public class Task {
     private String description;
 
     @Column
-    private String status; // "in_progress", "completed"
+    @Enumerated(EnumType.STRING)
+    private TaskStatus status;
 }
