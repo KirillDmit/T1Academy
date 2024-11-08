@@ -20,9 +20,17 @@ class TaskControllerTest {
     void testCreateTask() throws Exception {
         mockMvc.perform(post("/tasks")
                         .contentType("application/json")
-                        .content("{\"title\": \"New Task\", \"description\": \"Description\", \"status\": \"in_progress\"}"))
-                .andExpect(status().isOk());
+                        .content("{\"title\": \"New Task\", \"description\": \"Description\", \"status\": \"IN_PROGRESS\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.title").value("New Task"));
     }
 
-
+    @Test
+    void testGetTaskById() throws Exception {
+        Long taskId = 1L;
+        mockMvc.perform(get("/tasks/{id}", taskId))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(taskId))
+                .andExpect(jsonPath("$.title").value("New Task"));
+    }
 }
